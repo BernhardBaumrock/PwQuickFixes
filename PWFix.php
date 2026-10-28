@@ -1,5 +1,6 @@
 <?php namespace ProcessWire;
 abstract class PWFix extends Wire {
+  public $name;
   public $label;
   public $description;
 
@@ -16,12 +17,12 @@ abstract class PWFix extends Wire {
    * Load assets having the same name as the fix
    */
   public function loadAssets() {
-    $file = __DIR__ . "/fixes/$this.css";
+    $file = __DIR__ . "/fixes/{$this->name}.css";
     if(is_file($file)) {
       $m = "?m=".filemtime($file);
       $this->config->styles->add($this->url($file).$m);
     }
-    $file = __DIR__ . "/fixes/$this.js";
+    $file = __DIR__ . "/fixes/{$this->name}.js";
     if(is_file($file)) {
       $m = "?m=".filemtime($file);
       $this->config->scripts->add($this->url($file).$m);
