@@ -4,6 +4,9 @@ abstract class PWFix extends Wire {
   public $label;
   public $description;
 
+  /** @var PwQuickFixes */
+  public $fixes;
+
   /**
    * Class constructor
    */
